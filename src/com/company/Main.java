@@ -9,7 +9,7 @@ public class Main {
     private static final FindAble FIND_ABLE =  new FindByMap();
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public static void main(String[] args) throws InputException {
+    public static void main(String[] args) {
 
         SORT_ABLE.printAllMovies(movies);
 
@@ -42,9 +42,9 @@ public class Main {
                 SORT_ABLE.sortByDirector(movies);
             }
             else if(inputNumbers == 6) {
-                FIND_ABLE.findMoviesByActor(movies);
                 System.out.println("Printing all sorted by actor's name movies...");
                 System.out.println();
+                FIND_ABLE.findMoviesByActor(movies);
             }
             else if(inputNumbers == 7) {
                 System.out.println("Printing all sorted by director's name movies...");
@@ -61,15 +61,27 @@ public class Main {
                     System.out.println("Wrong, try again");
                     e.printStackTrace();
                 }
-
+                FIND_ABLE.findMoviesByYear(movies, a);
                 System.out.println("Printing " + a + " year's movie...");
                 System.out.println();
-                FIND_ABLE.findMoviesByYear(movies, a);
             }
             else if(inputNumbers == 9) {
                 FIND_ABLE.findMoviesAndRoleByActor(movies);
                 System.out.println("Printing all sorted by actor's name movies and roles...");
-
+                System.out.println();
+            }
+            else if(inputNumbers == 10) {
+                FIND_ABLE.showActorRoles(movies);
+                System.out.println("Printing sorted List of all actors with his roles");
+                System.out.println();
+            }
+            else if(inputNumbers == 0) {
+                System.out.println("See you!");
+                break;
+            }
+            else {
+                System.out.println("Wrong number, enter again!");
+//                inputNumbers = SCANNER.nextInt();
             }
         }
     }
@@ -89,17 +101,4 @@ public class Main {
         System.out.println("To quit press 0");
         System.out.println("---------------------------------------------");
     }
-
-//    static int getInt() {
-//        System.out.print("Write year ");
-//        int a = 0;
-//        try {
-//            String b = SCANNER.next();
-//            a = Integer.parseInt(b);
-//        } catch (Exception e) {
-//            System.out.println("Wrong, try again");
-//            e.printStackTrace();
-//        }
-//        return a;
-//    }
 }
